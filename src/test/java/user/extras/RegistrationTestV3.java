@@ -1,23 +1,35 @@
-package user;
+package user.extras;
 
 import base.TestBase;
 import com.github.javafaker.Faker;
 import enums.SocialTitle;
 import org.assertj.core.api.Assertions;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.commons.MenuPage;
 import pages.user.LoginPage;
 import pages.user.RegistrationPage;
 
-public class RegistrationTestWithAt extends TestBase {
+public class RegistrationTestV3 extends TestBase {
+    MenuPage menuPage;
+    LoginPage loginPage;
+    RegistrationPage registrationPage;
+
+    @BeforeMethod
+    public void testSetup() {
+        menuPage = new MenuPage(driver);
+        loginPage = new LoginPage(driver);
+        registrationPage = new RegistrationPage(driver);
+    }
 
     @Test
     public void shouldRegisterNewUser() {
-        at(MenuPage.class).goToLogin();
+        menuPage.goToLogin();
 
-        at(LoginPage.class).goToRegistration();
+        loginPage.goToRegistration();
 
-        at(RegistrationPage.class).setFirstName("jan")
+        registrationPage
+                .setFirstName("jan")
                 .setLastName("kowalski")
                 .setEmail(new Faker().internet().emailAddress())
                 .setPassword("pass1234")
@@ -25,7 +37,7 @@ public class RegistrationTestWithAt extends TestBase {
                 .selectSocialTitle(SocialTitle.MR)
                 .submitForm();
 
-        String actualUserName = at(MenuPage.class).getUserName();
+        String actualUserName = menuPage.getUserName();
 
         Assertions.assertThat(actualUserName).isEqualTo("jan kowalski");
     }

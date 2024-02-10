@@ -1,27 +1,11 @@
-package user;
+package user.extras;
 
-import base.TestBase;
 import com.github.javafaker.Faker;
 import enums.SocialTitle;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.commons.MenuPage;
-import pages.user.LoginPage;
-import pages.user.RegistrationPage;
 
-public class RegistrationTestV3 extends TestBase {
-    MenuPage menuPage;
-    LoginPage loginPage;
-    RegistrationPage registrationPage;
-
-    @BeforeMethod
-    public void testSetup() {
-        menuPage = new MenuPage(driver);
-        loginPage = new LoginPage(driver);
-        registrationPage = new RegistrationPage(driver);
-    }
-
+public class RegistrationTestV4 extends Pages {
     @Test
     public void shouldRegisterNewUser() {
         menuPage.goToLogin();
