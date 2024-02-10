@@ -1,6 +1,8 @@
 package pages.user;
 
+import com.github.javafaker.Faker;
 import enums.SocialTitle;
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,6 +39,16 @@ public class RegistrationPage extends BasePage {
     @FindBy(name = "id_gender")
     private List<WebElement> genders;
 
+
+    public void fillForm(User user) {
+        setFirstName(user.getFirstName());
+        setLastName(user.getLastName());
+        setEmail(user.getEmail());
+        setPassword(user.getPassword());
+        acceptPolices();
+        selectSocialTitle(user.getSocialTitle());
+        submitForm();
+    }
 
     public RegistrationPage selectSocialTitle(SocialTitle socialTitle) {
         System.out.println("selecting " + socialTitle);
