@@ -1,6 +1,7 @@
 package user;
 
 import base.TestBase;
+import com.github.javafaker.Faker;
 import enums.SocialTitle;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
@@ -11,14 +12,14 @@ import pages.user.RegistrationPage;
 public class RegistrationTest extends TestBase {
 
     @Test
-    public void shouldRegisterNewUser(){
+    public void shouldRegisterNewUser() {
         new MenuPage(driver).goToLogin();
 
         new LoginPage(driver).goToRegistration();
 
         new RegistrationPage(driver).setFirstName("jan")
                 .setLastName("kowalski")
-                .setEmail("jasdcaasdk@wp.pl")
+                .setEmail(new Faker().internet().emailAddress())
                 .setPassword("pass1234")
                 .acceptPolices()
                 .selectSocialTitle(SocialTitle.MR)
@@ -28,7 +29,6 @@ public class RegistrationTest extends TestBase {
 
         Assertions.assertThat(actualUserName).isEqualTo("jan kowalski");
     }
-
 
 
 }

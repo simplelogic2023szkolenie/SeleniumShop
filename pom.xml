@@ -16,9 +16,18 @@
         <selenium.version>4.17.0</selenium.version>
         <testng.version>7.9.0</testng.version>
         <assertJ.version>3.25.3</assertJ.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
