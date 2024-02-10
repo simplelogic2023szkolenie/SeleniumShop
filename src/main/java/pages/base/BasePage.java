@@ -1,8 +1,10 @@
 package pages.base;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -22,5 +24,18 @@ public class BasePage {
         defaultWait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public void sendKeys(WebElement element, String textToSet){
+        System.out.println("Typing: "+ textToSet);
+        element.sendKeys(textToSet);
+    }
 
+    public void sendKeysAndClear(WebElement element, String textToSet){
+        element.clear();
+        sendKeys(element, textToSet);
+    }
+
+    public void click(WebElement element){
+        System.out.println("clicking on: " + element.getText().replace("\r\n"," "));
+        element.click();
+    }
 }
