@@ -1,4 +1,4 @@
-package user.extras;
+package user.extras.pages;
 
 import com.github.javafaker.Faker;
 import enums.SocialTitle;

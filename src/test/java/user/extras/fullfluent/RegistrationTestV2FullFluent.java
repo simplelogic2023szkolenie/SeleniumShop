@@ -1,4 +1,4 @@
-package user.extras;
+package user.extras.fullfluent;
 
 import base.TestBase;
 import com.github.javafaker.Faker;

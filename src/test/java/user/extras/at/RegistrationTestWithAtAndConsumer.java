@@ -1,4 +1,4 @@
-package user.extras;
+package user.extras.at;
 
 import base.TestBase;
 import com.github.javafaker.Faker;

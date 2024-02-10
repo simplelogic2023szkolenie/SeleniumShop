@@ -1,4 +1,4 @@
-package user.extras;
+package user.extras.pages;
 
 import base.TestBase;
 import org.testng.annotations.BeforeMethod;
