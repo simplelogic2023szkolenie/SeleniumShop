@@ -1,13 +1,11 @@
 package base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.devtools.DevTools;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.base.BasePage;
 import providers.UrlProvider;
 
 public class TestBase {
@@ -36,12 +34,15 @@ public class TestBase {
         driver.quit();
     }
 
-
-    public boolean isDisplayed(By by) {
+    // typy generyczne <T> - https://www.youtube.com/watch?v=K1iu1kXkVoA
+    // refleksja - https://www.youtube.com/watch?v=bhhMJSKNCQY
+    // ten kod przyjmuje nazwe klasy, która dziedzicy po TestBase i zwraca jej obiekt
+    public <T extends BasePage> T at(Class<T> pageClass) {
         try {
-            return driver.findElement(by).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
+            // poniżej to refleksja
+            return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
