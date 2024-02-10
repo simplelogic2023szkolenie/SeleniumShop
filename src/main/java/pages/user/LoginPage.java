@@ -1,11 +1,11 @@
 package pages.user;
 
 import org.openqa.selenium.WebDriver;
+import pages.base.BasePage;
 
-public class LoginPage {
-    public LoginPage(WebDriver driver){
+public class LoginPage extends BasePage {
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void goToLogin() {
-    }
 }

@@ -1,4 +1,10 @@
 package pages.products;
 
-public class ProductDetailsPage {
+import org.openqa.selenium.WebDriver;
+import pages.base.BasePage;
+
+public class ProductDetailsPage extends BasePage {
+    public ProductDetailsPage(WebDriver driver) {
+        super(driver);
+    }
 }
