@@ -1,20 +1,29 @@
 package user;
 
 import base.TestBase;
+import enums.SocialTitle;
 import org.testng.annotations.Test;
 import pages.commons.MenuPage;
 import pages.user.LoginPage;
+import pages.user.RegistrationPage;
 
 public class RegistrationTest extends TestBase {
 
     @Test
     public void shouldRegisterNewUser(){
+
+        SocialTitle socialTitle= SocialTitle.MR;
+        SocialTitle socialTitle2= SocialTitle.MRS;
+
+
         //  Kliknij przycisk Sign in -> PO - webelement + metoda + impl w teście
         //  Kliknij przycisk No account? -> PO - webelement + metoda + impl w teście
 
         new MenuPage(driver).goToLogin();
 
         new LoginPage(driver).goToRegistration();
+
+        new RegistrationPage(driver).selectSocialTitle(SocialTitle.MR);
     }
 
 
