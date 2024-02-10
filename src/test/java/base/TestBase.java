@@ -27,8 +27,7 @@ public class TestBase {
 
         driver = new ChromeDriver(options);
 
-        driver.get(UrlProvider.cart);
-
+        driver.get(UrlProvider.homePage);
     }
 
     @AfterMethod
