@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
+import pages.commons.MenuPage;
 
 import java.util.List;
 
@@ -74,8 +75,9 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public void submitForm() {
+    public MenuPage submitForm() {
         click(saveBtn);
+        return new MenuPage(driver);
     }
 
 }
