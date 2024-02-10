@@ -27,8 +27,6 @@ public class RegistrationTestWithAt extends TestBase {
 
         Assertions.assertThat(actualUserName).isEqualTo(user.getDisplayedUserName());
     }
-
-
 }
 
 /*
