@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import providers.UrlProvider;
 
 public class TestBase {
     public boolean isHeadless() {
@@ -20,17 +21,14 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
 
-        // to zadziała bo od czerwca 2023, selenium ma wbudowanych
-        // webdrivermamanger -> automatycznie pobiera drivery do przegladarek
-
         if (isHeadless()) {
             options.addArguments("--headless");
         }
 
         driver = new ChromeDriver(options);
-        // implicitlyWait konfiguurujemy w test base
-        // ale go zakomenntuje zeby mi nie modyfikował wszystkich testów ktore dziedziczną po TestBase
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.get(UrlProvider.cart);
+
     }
 
     @AfterMethod

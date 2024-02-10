@@ -15,9 +15,18 @@
 
         <selenium.version>4.16.1</selenium.version>
         <testng.version>7.9.0</testng.version>
+        <assertJ.version>3.25.3</assertJ.version>
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertJ.version}</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -37,7 +46,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
