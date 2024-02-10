@@ -11,11 +11,6 @@ public class RegistrationTest extends TestBase {
 
     @Test
     public void shouldRegisterNewUser(){
-
-        SocialTitle socialTitle= SocialTitle.MR;
-        SocialTitle socialTitle2= SocialTitle.MRS;
-
-
         //  Kliknij przycisk Sign in -> PO - webelement + metoda + impl w teście
         //  Kliknij przycisk No account? -> PO - webelement + metoda + impl w teście
 
