@@ -18,7 +18,13 @@ public class RegistrationTest extends TestBase {
 
         new LoginPage(driver).goToRegistration();
 
-        new RegistrationPage(driver).selectSocialTitle(SocialTitle.MR);
+        new RegistrationPage(driver).setFirstName("jan")
+                .setLastName("kowalski")
+                .setEmail("jasdk@wp.pl")
+                .setPassword("pass1234")
+                .acceptPolices()
+                .selectSocialTitle(SocialTitle.MR)
+                .submitForm();
     }
 
 
