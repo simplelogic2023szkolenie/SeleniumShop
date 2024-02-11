@@ -1,32 +1,24 @@
 package base;
 
+import enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.base.BasePage;
+import providers.DriverProvider;
 import providers.UrlProvider;
 
 import java.util.function.Consumer;
 
 public class TestBase {
-    public boolean isHeadless() {
-        return false; // powinno być pobrane z pliku
-    }
 
     public WebDriver driver;
 
     @BeforeMethod
     public void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-
-        if (isHeadless()) {
-            options.addArguments("--headless");
-        }
-
-        driver = new ChromeDriver(options);
+        driver = DriverProvider.getDriver(Browser.CHROME);
 
         driver.get(UrlProvider.homePage);
     }

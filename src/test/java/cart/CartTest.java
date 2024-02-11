@@ -11,7 +11,6 @@ import pages.products.ProductPopupPage;
 import pages.products.ProductsGridPage;
 
 public class CartTest extends TestBase {
-
     @Test
     public void shouldAddProductToCart() {
         ProductDetailsPage productDetailsPage = new ProductDetailsPage(driver);
