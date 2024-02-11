@@ -31,6 +31,9 @@ public class Config {
     public static String getAppUrl(){
         return properties.getProperty("appUrl");
     }
+    public static String getCurrencySymbol(){
+        return properties.getProperty("currencySymbol");
+    }
 
     public static boolean isHeadless(){
         return Boolean.parseBoolean(properties.getProperty("isHeadless"));

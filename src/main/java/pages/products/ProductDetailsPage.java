@@ -1,9 +1,12 @@
 package pages.products;
 
+import models.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
+
+import java.math.BigDecimal;
 
 public class ProductDetailsPage extends BasePage {
     public ProductDetailsPage(WebDriver driver) {
@@ -15,7 +18,7 @@ public class ProductDetailsPage extends BasePage {
 
     @FindBy(css = "h1")
     private WebElement name;
-    @FindBy(css = ".current-price")
+    @FindBy(css = "[itemprop='price']")
     private WebElement price;
 
     @FindBy(css = ".add-to-cart")
@@ -24,6 +27,13 @@ public class ProductDetailsPage extends BasePage {
 
     public String getName() {
         return name.getText();
+    }
+
+    public BigDecimal getProductPrice() {
+        return getPrice(price);
+    }
+    public int getQuantity() {
+        return Integer.parseInt(quantityInput.getAttribute("value"));
     }
 
 
@@ -37,8 +47,8 @@ public class ProductDetailsPage extends BasePage {
         return this;
     }
 
-    public String getProductPrice() {
-        return price.getText();
+    public Product toProductModel() {
+        return new Product(getName(), getProductPrice(), getQuantity());
     }
 
 

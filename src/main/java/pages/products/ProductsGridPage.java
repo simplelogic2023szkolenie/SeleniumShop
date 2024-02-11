@@ -13,19 +13,20 @@ public class ProductsGridPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css=".product-miniature")
+    @FindBy(css = ".product-miniature")
     private List<WebElement> productMiniatures;
 
-    public List<ProductMiniatureComponent> getProductMiniatureComponents(){
+    public List<ProductMiniatureComponent> getProductMiniatureComponents() {
         // całość można zapisać w 1 linijce użwają stream() collect
         List<ProductMiniatureComponent> miniatureComponents = new ArrayList<>();
-        for (WebElement productMiniature : productMiniatures){
+        for (WebElement productMiniature : productMiniatures) {
             miniatureComponents.add(new ProductMiniatureComponent(productMiniature, driver));
         }
         return miniatureComponents;
     }
 
-    public ProductDetailsPage openRandomProduct(){
+    public ProductDetailsPage openRandomProduct() {
+        defaultWait.until(c -> productMiniatures.size() > 1);
         getRandomElement(getProductMiniatureComponents()).open();
         return new ProductDetailsPage(driver);
     }

@@ -1,32 +1,38 @@
 package pages.cart;
 
-import org.assertj.core.api.Assertions;
+import models.Cart;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = ".product-line-info a")
-    private WebElement productName;
-    @FindBy(css = ".current-price")
-    private WebElement productPrice;
+    @FindBy(css = ".cart-item")
+    private List<WebElement> cartLines;
 
-    @FindBy(css = ".js-cart-line-product-quantity")
-    private WebElement productQuantity;
-    public String getAddedProductName(){
-        return productName.getText();
+    public CartLineComponent getNthCartLineComponent(int number) {
+        return getCartLineComponent().get(number);
     }
 
-    public String getAddedProductQuantity() {
-        return productQuantity.getAttribute("value");
+    public List<CartLineComponent> getCartLineComponent() {
+        return cartLines.stream()
+                .map(cartLine -> new CartLineComponent(cartLine, driver))
+                .collect(Collectors.toList());
     }
 
-    public String getAddedProductPrice() {
-        return productPrice.getText();
+    public Cart toCartModel(){
+        Cart cart = new Cart();
+        for (CartLineComponent cartLinePage : getCartLineComponent()){
+            cart.addProduct(cartLinePage.toProductModel());
+        }
+        return cart;
     }
+
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
@@ -48,6 +49,12 @@ public abstract class BasePage {
         System.out.println("clicking on: " + element.getText().replace("\r\n", " "));
         element.click();
     }
+
+    public BigDecimal getPrice(WebElement element){
+        return new BigDecimal(element.getText().replace(Config.getCurrencySymbol(),"").trim());
+    }
+
+
 
     // to jest metoda generyczna przyjmuje listę dowolnych obiektów i zwraca jeden z nich
     // typy generyczne <T> - https://www.youtube.com/watch?v=K1iu1kXkVoA

@@ -1,15 +1,14 @@
 package cart;
 
 import base.TestBase;
-import configuration.Config;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.cart.CartPage;
 import pages.products.ProductDetailsPage;
 import pages.products.ProductPopupPage;
 import pages.products.ProductsGridPage;
+
+import java.math.BigDecimal;
 
 public class CartTest extends TestBase {
     @Test
@@ -20,7 +19,7 @@ public class CartTest extends TestBase {
 
 
         String productName = productDetailsPage.getName();
-        String productPrice = productDetailsPage.getProductPrice();
+        BigDecimal productPrice = productDetailsPage.getProductPrice();
 
         productDetailsPage.setQuantity(3)
                 .addToCart();
@@ -33,9 +32,9 @@ public class CartTest extends TestBase {
 
         SoftAssertions softAssertions = new SoftAssertions();
 
-        softAssertions.assertThat(cartPage.getAddedProductName()).isEqualTo(productName);
-        softAssertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);
-        softAssertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo("3");
+        softAssertions.assertThat(cartPage.getNthCartLineComponent(0).getProductName()).isEqualTo(productName);
+        softAssertions.assertThat(cartPage.getNthCartLineComponent(0).getProductPrice()).isEqualTo(productPrice);
+        softAssertions.assertThat(cartPage.getNthCartLineComponent(0).getProductQuantity()).isEqualTo("3");
 
         softAssertions.assertAll();
     }
