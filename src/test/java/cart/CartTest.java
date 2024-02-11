@@ -33,7 +33,7 @@ public class CartTest extends TestBase {
 
         SoftAssertions softAssertions = new SoftAssertions();
 
-        softAssertions.assertThat(cartPage.getAddedProductName()).isEqualTo(productName);
+        softAssertions.assertThat(cartPage.getAddedProductName()).isEqualTo("asdasdasdasd");
         softAssertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);
         softAssertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo("3");
 
