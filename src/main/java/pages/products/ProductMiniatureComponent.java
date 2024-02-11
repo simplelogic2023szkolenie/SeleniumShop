@@ -9,14 +9,37 @@ public class ProductMiniatureComponent extends BasePage {
     public ProductMiniatureComponent(WebElement parent, WebDriver driver) {
         super(parent, driver);
     }
+
     @FindBy(css = ".product-title")
     private WebElement name;
-    public String getName(){
+
+    @FindBy(css = ".discount")
+    private WebElement discount;
+
+    @FindBy(css = ".price")
+    private WebElement price;
+
+    @FindBy(css = ".regular-price")
+    private WebElement priceBeforeDiscount;
+
+    public String getName() {
         return name.getText();
+    }
+
+    public String getDiscount() {
+        return discount.getText();
+    }
+
+    public String getPrice() {
+        return price.getText();
+    }
+
+    public String getPriceBeforeDiscount() {
+        return priceBeforeDiscount.getText();
     }
     // webelement + metody zwaracjące: discount, price, priceBeforeDiscount, name
 
-    public ProductDetailsPage open(){
+    public ProductDetailsPage open() {
         click(name);
         return new ProductDetailsPage(driver);
     }
