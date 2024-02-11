@@ -1,6 +1,7 @@
 package cart;
 
 import base.TestBase;
+import configuration.Config;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
