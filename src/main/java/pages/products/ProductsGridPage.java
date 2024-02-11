@@ -14,4 +14,6 @@ public class ProductsGridPage extends BasePage {
     // List<WebElement>  na List<ProductMiniatureComponent>
 
     // public void openRandomProduct()
+    // losujemy sobie jeden z elementów z   getProductMiniatureComponents()
+    // i uruchamiamy na nim metode open() zaimplemenetowaja w  ProductMiniatureComponent
 }
