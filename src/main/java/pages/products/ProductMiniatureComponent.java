@@ -14,11 +14,7 @@ public class ProductMiniatureComponent extends BasePage {
     public String getName(){
         return name.getText();
     }
-    // konstruktor z BP uzuwający parent oraz driver
-
     // webelement + metody zwaracjące: discount, price, priceBeforeDiscount, name
-
-    // do tego też metoda open() która otwera dany produt
 
     public ProductDetailsPage open(){
         click(name);
