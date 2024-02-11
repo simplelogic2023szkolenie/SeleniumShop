@@ -8,6 +8,6 @@ public class ProductPopupPage extends BasePage {
         super(driver);
     }
 
-    // potrzebne webelement i metoda do przechodze do korzyka
+    // potrzebne webelement i metoda do przechodze do koszyka
     // pamietać o wait!!
 }
