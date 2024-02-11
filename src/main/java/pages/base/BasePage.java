@@ -1,6 +1,5 @@
 package pages.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -49,7 +48,10 @@ public class BasePage {
         element.click();
     }
 
-    public WebElement getRandomElement(List<WebElement> elements){
-        return elements.get(new Random().nextInt(elements.size()));
+    // to jest metoda generyczna przyjmuje listę dowolnych obiektów i zwraca jeden z nich
+    // typy generyczne <T> - https://www.youtube.com/watch?v=K1iu1kXkVoA
+
+    public <T> T getRandomElement(List<T> list){
+        return list.get(new Random().nextInt(list.size()));
     }
 }

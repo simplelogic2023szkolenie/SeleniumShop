@@ -7,7 +7,6 @@ import pages.base.BasePage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ProductsGridPage extends BasePage {
     public ProductsGridPage(WebDriver driver) {
@@ -27,10 +26,7 @@ public class ProductsGridPage extends BasePage {
     }
 
     public ProductDetailsPage openRandomProduct(){
-        List<ProductMiniatureComponent> products = getProductMiniatureComponents();
-
-        ProductMiniatureComponent product = products.get(new Random().nextInt(products.size()));
-        product.open();
+        getRandomElement(getProductMiniatureComponents()).open();
         return new ProductDetailsPage(driver);
     }
 }
