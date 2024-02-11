@@ -37,7 +37,6 @@ public class ProductMiniatureComponent extends BasePage {
     public String getPriceBeforeDiscount() {
         return priceBeforeDiscount.getText();
     }
-    // webelement + metody zwaracjące: discount, price, priceBeforeDiscount, name
 
     public ProductDetailsPage open() {
         click(name);
