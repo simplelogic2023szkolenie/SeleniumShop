@@ -16,8 +16,9 @@ public class CartTest extends TestBase {
 
         new ProductsGridPage(driver).openRandomProduct();
 
+
         String productName = productDetailsPage.getName();
-        String productPrice = productDetailsPage.getProductPrice();
+        String productPrice = productDetailsPage.getProductPrice(); // tutaj
 
         productDetailsPage.setPrice(3)
                 .addToCart();
@@ -27,7 +28,7 @@ public class CartTest extends TestBase {
         CartPage cartPage = new CartPage(driver);
 
         Assertions.assertThat(cartPage.getAddedProductName()).isEqualTo(productName);
-        Assertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);
-        Assertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo(3);
+        Assertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);// tutaj
+        Assertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo(3);// tutaj
     }
 }
