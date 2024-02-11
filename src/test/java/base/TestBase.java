@@ -1,5 +1,6 @@
 package base;
 
+import configuration.Config;
 import enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +19,7 @@ public class TestBase {
 
     @BeforeMethod
     public void setup() {
-        driver = DriverProvider.getDriver(Browser.CHROME);
+        driver = DriverProvider.getDriver(Config.getBrowser());
 
         driver.get(UrlProvider.homePage);
     }
