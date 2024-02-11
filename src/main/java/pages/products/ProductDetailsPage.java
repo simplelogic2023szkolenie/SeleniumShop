@@ -7,4 +7,6 @@ public class ProductDetailsPage extends BasePage {
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
     }
+
+    // 2x webelement i 2x metoda, setQuantity(int quantity), addToCart()
 }

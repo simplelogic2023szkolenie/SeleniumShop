@@ -7,4 +7,7 @@ public class ProductPopupPage extends BasePage {
     public ProductPopupPage(WebDriver driver) {
         super(driver);
     }
+
+    // potrzebne webelement i metoda do przechodze do korzyka
+    // pamietać o wait!!
 }
