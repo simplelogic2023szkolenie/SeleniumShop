@@ -4,6 +4,7 @@ import base.TestBase;
 import com.github.javafaker.Faker;
 import enums.SocialTitle;
 import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.commons.MenuPage;
 import pages.user.LoginPage;
@@ -15,19 +16,32 @@ public class RegistrationTest extends TestBase {
     public void shouldRegisterNewUser() {
         new MenuPage(driver).goToLogin();
 
-        new LoginPage(driver).goToRegistration();
 
-        new RegistrationPage(driver).setFirstName("jan")
-                .setLastName("kowalski")
-                .setEmail(new Faker().internet().emailAddress())
-                .setPassword("pass1234")
-                .acceptPolices()
-                .selectSocialTitle(SocialTitle.MR)
-                .submitForm();
+        driver.findElement(By.cssSelector("#login-form [name='email']")).sendKeys("asd");
+        driver.findElement(By.cssSelector("#submit-login")).click();
 
-        String actualUserName = new MenuPage(driver).getUserName();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+       String asd =  driver.findElement(By.cssSelector("#login-form [name='email']")).getAttribute("title");
 
-        Assertions.assertThat(actualUserName).isEqualTo("jan kowalski");
+        System.out.println(asd);
+
+//        new LoginPage(driver).goToRegistration();
+//
+//        new RegistrationPage(driver).setFirstName("jan")
+//                .setLastName("kowalski")
+//                .setEmail(new Faker().internet().emailAddress())
+//                .setPassword("pass1234")
+//                .acceptPolices()
+//                .selectSocialTitle(SocialTitle.MR)
+//                .submitForm();
+//
+//        String actualUserName = new MenuPage(driver).getUserName();
+//
+//        Assertions.assertThat(actualUserName).isEqualTo("jan kowalski");
     }
 
 

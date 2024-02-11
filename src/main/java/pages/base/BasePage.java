@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
-public class BasePage {
+public abstract class BasePage {
     protected Actions actions;
     protected WebDriver driver;
     protected WebDriverWait defaultWait;
@@ -53,5 +53,4 @@ public class BasePage {
 
     public <T> T getRandomElement(List<T> list){
         return list.get(new Random().nextInt(list.size()));
-    }
-}
+    }}
