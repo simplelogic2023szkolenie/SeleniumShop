@@ -1,5 +1,6 @@
 package providers;
 
+import configuration.Config;
 import enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,16 +15,27 @@ public class DriverProvider {
             case CHROME -> {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("start-maximized");
+
+                if(Config.isHeadless()){
+                    options.addArguments("--headless");
+                }
+
                 return new ChromeDriver(options);
             }
             case FIREFOX -> {
-                return new FirefoxDriver();
+                WebDriver driver = new FirefoxDriver();
+                driver.manage().window().maximize();
+                return driver;
             }
             case EDGE -> {
-                return new EdgeDriver();
+                WebDriver driver = new EdgeDriver();
+                driver.manage().window().maximize();
+                return driver;
             }
             case IE -> {
-                return new InternetExplorerDriver();
+                WebDriver driver = new InternetExplorerDriver();
+                driver.manage().window().maximize();
+                return driver;
             }
             default -> throw new IllegalStateException("Unexpected value: " + browser);
         }
