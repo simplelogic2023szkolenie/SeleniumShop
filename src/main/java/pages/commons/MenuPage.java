@@ -22,6 +22,5 @@ public class MenuPage extends BasePage {
     public LoginPage goToLogin() {
         click(loginBtn);
         return new LoginPage(driver);
-
     }
 }

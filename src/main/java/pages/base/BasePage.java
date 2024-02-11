@@ -5,9 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Random;
 
 public class BasePage {
     protected Actions actions;
@@ -16,6 +19,11 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        initDriver(driver);
+    }
+
+    public BasePage(WebElement parent, WebDriver driver) {
+        PageFactory.initElements(new DefaultElementLocatorFactory(parent), this);
         initDriver(driver);
     }
 
@@ -39,5 +47,9 @@ public class BasePage {
     protected void click(WebElement element) {
         System.out.println("clicking on: " + element.getText().replace("\r\n", " "));
         element.click();
+    }
+
+    public WebElement getRandomElement(List<WebElement> elements){
+        return elements.get(new Random().nextInt(elements.size()));
     }
 }

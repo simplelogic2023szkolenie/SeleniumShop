@@ -18,6 +18,7 @@ public class RegistrationTestWithAtAndConsumer extends TestBase {
         at(LoginPage.class).goToRegistration();
 
         at(RegistrationPage.class, p -> {
+            // w tym zapisnie nie trzeba mieć w ogóle w PO podejście FPOP z 'return this'
             p.setFirstName("jan");
             p.setLastName("kowalski");
             p.setEmail(new Faker().internet().emailAddress());
