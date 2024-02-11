@@ -12,7 +12,20 @@ public class CartPage extends BasePage {
 
     @FindBy(css = ".product-line-info a")
     private WebElement productName;
+    @FindBy(css = ".current-price")
+    private WebElement productPrice;
+
+    @FindBy(css = ".js-cart-line-product-quantity")
+    private WebElement productQuantity;
     public String getAddedProductName(){
         return productName.getText();
+    }
+
+    public String getAddedProductQuantity() {
+        return productQuantity.getAttribute("value");
+    }
+
+    public String getAddedProductPrice() {
+        return productPrice.getText();
     }
 }

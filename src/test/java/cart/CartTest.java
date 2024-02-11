@@ -2,7 +2,9 @@ package cart;
 
 import base.TestBase;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.cart.CartPage;
 import pages.products.ProductDetailsPage;
 import pages.products.ProductPopupPage;
@@ -18,17 +20,23 @@ public class CartTest extends TestBase {
 
 
         String productName = productDetailsPage.getName();
-        String productPrice = productDetailsPage.getProductPrice(); // tutaj
+        String productPrice = productDetailsPage.getProductPrice();
 
-        productDetailsPage.setPrice(3)
+        productDetailsPage.setQuantity(3)
                 .addToCart();
 
         new ProductPopupPage(driver).goToCart();
 
         CartPage cartPage = new CartPage(driver);
 
-        Assertions.assertThat(cartPage.getAddedProductName()).isEqualTo(productName);
-        Assertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);// tutaj
-        Assertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo(3);// tutaj
+
+
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        softAssertions.assertThat(cartPage.getAddedProductName()).isEqualTo(productName);
+        softAssertions.assertThat(cartPage.getAddedProductPrice()).isEqualTo(productPrice);
+        softAssertions.assertThat(cartPage.getAddedProductQuantity()).isEqualTo("3");
+
+        softAssertions.assertAll();
     }
 }
