@@ -1,5 +1,6 @@
 package pages.base;
 
+import configuration.Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,7 +30,7 @@ public abstract class BasePage {
     private void initDriver(WebDriver driver) {
         this.driver = driver;
         actions = new Actions(driver);
-        defaultWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        defaultWait = new WebDriverWait(driver, Duration.ofSeconds(Config.getDefaultWait()));
     }
 
     protected void sendKeys(WebElement element, String textToSet) {

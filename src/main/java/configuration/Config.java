@@ -35,4 +35,8 @@ public class Config {
     public static boolean isHeadless(){
         return Boolean.parseBoolean(properties.getProperty("isHeadless"));
     }
+
+    public static int getDefaultWait(){
+        return Integer.parseInt(properties.getProperty("defaultWait"));
+    }
 }
