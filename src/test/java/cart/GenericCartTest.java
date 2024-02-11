@@ -26,6 +26,7 @@ public class GenericCartTest extends TestBase {
 
             at(ProductDetailsPage.class, p -> {
                 p.setQuantity(getRandomQuantity());
+
                 expectectedCart.addProduct(p.toProductModel());
                 p.addToCart();
             });
